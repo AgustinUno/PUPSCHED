@@ -35,8 +35,6 @@ import org.jdesktop.swingx.JXTextField;
  */
 public class admin_dashboard extends javax.swing.JFrame {
 
-  
-
     /**
      * Creates new form Log_in
      */
@@ -47,6 +45,39 @@ public class admin_dashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null); // Center the frame to screen
         yeartxt.setText(setYear);
         sectxt.setText(setSection);
+        applyCustomFont();
+    }
+
+    private void applyCustomFont() {
+
+        Title1.setFont(Custom_font.getFont("Bold.ttf", 18));
+        Title2.setFont(Custom_font.getFont("Regular.ttf", 12));
+        monthcmbx.setFont(Custom_font.getFont("Regular.ttf", 14));
+        weekcmbx.setFont(Custom_font.getFont("Regular.ttf", 14));
+        logoutbtn.setFont(Custom_font.getFont("Bold.ttf", 13));
+        yearlbl.setFont(Custom_font.getFont("Regular.ttf", 13));
+        seclbl.setFont(Custom_font.getFont("Regular.ttf", 13));
+        yeartxt.setFont(Custom_font.getFont("Regular.ttf", 13));
+        sectxt.setFont(Custom_font.getFont("Regular.ttf", 13));
+        sunbtn.setFont(Custom_font.getFont("Bold.ttf", 18));
+        monbtn.setFont(Custom_font.getFont("Bold.ttf", 18));
+        tuebtn.setFont(Custom_font.getFont("Bold.ttf", 18));
+        wedbtn.setFont(Custom_font.getFont("Bold.ttf", 18));
+        thubtn.setFont(Custom_font.getFont("Bold.ttf", 18));
+        fribtn.setFont(Custom_font.getFont("Bold.ttf", 18));
+        satbtn.setFont(Custom_font.getFont("Bold.ttf", 18));
+        sunlbl.setFont(Custom_font.getFont("Regular.ttf", 13));
+        monlbl.setFont(Custom_font.getFont("Regular.ttf", 13));
+        tuelbl.setFont(Custom_font.getFont("Regular.ttf", 13));
+        wedlbl.setFont(Custom_font.getFont("Regular.ttf", 13));
+        thulbl.setFont(Custom_font.getFont("Regular.ttf", 13));
+        frilbl.setFont(Custom_font.getFont("Regular.ttf", 13));
+        satlbl.setFont(Custom_font.getFont("Regular.ttf", 13));
+        add_sched.setFont(Custom_font.getFont("Bold.ttf", 14));
+        delete_db.setFont(Custom_font.getFont("Bold.ttf", 14));
+        deletecmbx.setFont(Custom_font.getFont("Regular.ttf", 14));
+        footer.setFont(Custom_font.getFont("Regular.ttf", 10));
+        footer1.setFont(Custom_font.getFont("Regular.ttf", 10));
 
     }
 
@@ -516,55 +547,50 @@ public class admin_dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_formFocusLost
 
     private void delete_dbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_dbActionPerformed
-    try {
-        String delete_day = (String) deletecmbx.getSelectedItem();
+        try {
+            String delete_day = (String) deletecmbx.getSelectedItem();
 
-        if (delete_day != null && !delete_day.trim().isEmpty()) {
-            // Create a custom panel for the confirmation dialog
-            JPanel panel = new JPanel(new BorderLayout(10, 10));
-            JLabel messageLabel = new JLabel("Are you sure you want to delete the schedule for " + delete_day.trim() + "?");
-            messageLabel.setFont(new Font("Arial", Font.BOLD, 14));
-            panel.add(messageLabel, BorderLayout.CENTER);
+            if (delete_day != null && !delete_day.trim().isEmpty()) {
+                // Create a custom panel for the confirmation dialog
+                JPanel panel = new JPanel(new BorderLayout(10, 10));
+                JLabel messageLabel = new JLabel("Are you sure you want to delete the schedule for " + delete_day.trim() + "?");
+                messageLabel.setFont(new Font("Arial", Font.BOLD, 14));
+                panel.add(messageLabel, BorderLayout.CENTER);
 
-            // Show confirmation dialog
-            int response = JOptionPane.showConfirmDialog(null, panel, "Confirm Deletion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                // Show confirmation dialog
+                int response = JOptionPane.showConfirmDialog(null, panel, "Confirm Deletion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-            if (response == JOptionPane.YES_OPTION) {
-                String trimmed_day = delete_day.trim();
-                if (trimmed_day.equals("Sunday") && !sunlbl.getText().isBlank()) {
-                    sunlbl.setText("");
-                } else if (trimmed_day.equals("Monday") && !monlbl.getText().isBlank()) {
-                    monlbl.setText("");
-                } else if (trimmed_day.equals("Tuesday") && !tuelbl.getText().isBlank()) {
-                    tuelbl.setText("");
-                } else if (trimmed_day.equals("Wednesday") && !wedlbl.getText().isBlank()) {
-                    wedlbl.setText("");
-                } else if (trimmed_day.equals("Thursday") && !thulbl.getText().isBlank()) {
-                    thulbl.setText("");
-                } else if (trimmed_day.equals("Friday") && !frilbl.getText().isBlank()) {
-                    frilbl.setText("");
-                } else if (trimmed_day.equals("Saturday") && !satlbl.getText().isBlank()) {
-                    satlbl.setText("");
-                } else {
-                    JOptionPane.showMessageDialog(null, "The schedule for " + delete_day.trim() + " is already blank or null.", "Information", JOptionPane.INFORMATION_MESSAGE);
+                if (response == JOptionPane.YES_OPTION) {
+                    String trimmed_day = delete_day.trim();
+                    if (trimmed_day.equals("Sunday") && !sunlbl.getText().isBlank()) {
+                        sunlbl.setText("");
+                    } else if (trimmed_day.equals("Monday") && !monlbl.getText().isBlank()) {
+                        monlbl.setText("");
+                    } else if (trimmed_day.equals("Tuesday") && !tuelbl.getText().isBlank()) {
+                        tuelbl.setText("");
+                    } else if (trimmed_day.equals("Wednesday") && !wedlbl.getText().isBlank()) {
+                        wedlbl.setText("");
+                    } else if (trimmed_day.equals("Thursday") && !thulbl.getText().isBlank()) {
+                        thulbl.setText("");
+                    } else if (trimmed_day.equals("Friday") && !frilbl.getText().isBlank()) {
+                        frilbl.setText("");
+                    } else if (trimmed_day.equals("Saturday") && !satlbl.getText().isBlank()) {
+                        satlbl.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "The schedule for " + delete_day.trim() + " is already blank or null.", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    }
+
+                    delete_db();
                 }
-                
-                delete_db();
+            } else {
+                JOptionPane.showMessageDialog(null, "No day selected.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "No day selected.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "An error occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();  // This will print the error to the console for debugging
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "An error occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        e.printStackTrace();  // This will print the error to the console for debugging
-    }
-    
-    
-    
-    
-    
-    
-    
+
+
     }//GEN-LAST:event_delete_dbActionPerformed
 
     private void fribtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fribtnActionPerformed
@@ -764,54 +790,52 @@ public class admin_dashboard extends javax.swing.JFrame {
             Logger.getLogger(admin_dashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_add_schedActionPerformed
-            
-   public void delete_db() {
-    int week_db = weekcmbx.getSelectedIndex() + 1;
-    int month_db = monthcmbx.getSelectedIndex() - 3;
-    int day_delete = deletecmbx.getSelectedIndex() + 1;
 
-    System.out.println("Month: " + month_db);
-    System.out.println("Week: " + week_db);
-    System.out.println("Day: " + day_delete);
+    public void delete_db() {
+        int week_db = weekcmbx.getSelectedIndex() + 1;
+        int month_db = monthcmbx.getSelectedIndex() - 3;
+        int day_delete = deletecmbx.getSelectedIndex() + 1;
 
-    String sched_code = String.valueOf(month_db) + String.valueOf(week_db) + String.valueOf(day_delete);
-    System.out.println("Sched Code to delete: " + sched_code);
+        System.out.println("Month: " + month_db);
+        System.out.println("Week: " + week_db);
+        System.out.println("Day: " + day_delete);
 
-    PreparedStatement ps = null;
+        String sched_code = String.valueOf(month_db) + String.valueOf(week_db) + String.valueOf(day_delete);
+        System.out.println("Sched Code to delete: " + sched_code);
 
-    try {
-        // Update query to update the schedule table
-        String updateQuery = "UPDATE schedule SET course = ?, room = ?, time = ?, note = ? WHERE week_id = ?";
-        ps = Db_con_3.getConnection().prepareStatement(updateQuery);
-        ps.setString(1, "");  // Set course value here
-        ps.setString(2, "");  // Set room value here
-        ps.setString(3, "");  // Set time value here
-        ps.setString(4, "");  // Set note value here
-        ps.setString(5, sched_code);  // Set week_id value
+        PreparedStatement ps = null;
 
-        int rowsAffected = ps.executeUpdate();
-        if (rowsAffected > 0) {
-            System.out.println("Schedule updated successfully.");
-        } else {
-            System.out.println("Error: Schedule not updated or week_id not found.");
-        }
-
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-    } finally {
-        // Close resources in the finally block
         try {
-            if (ps != null) ps.close();
+            // Update query to update the schedule table
+            String updateQuery = "UPDATE schedule SET course = ?, room = ?, time = ?, note = ? WHERE week_id = ?";
+            ps = Db_con_3.getConnection().prepareStatement(updateQuery);
+            ps.setString(1, "");  // Set course value here
+            ps.setString(2, "");  // Set room value here
+            ps.setString(3, "");  // Set time value here
+            ps.setString(4, "");  // Set note value here
+            ps.setString(5, sched_code);  // Set week_id value
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Schedule updated successfully.");
+            } else {
+                System.out.println("Error: Schedule not updated or week_id not found.");
+            }
+
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            // Close resources in the finally block
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         }
     }
-}
 
-
-    
-    
-    
     public void save_db() throws IOException {
         int week_db = weekcmbx.getSelectedIndex() + 1;
         int month_db = monthcmbx.getSelectedIndex() - 3;
@@ -908,15 +932,15 @@ public class admin_dashboard extends javax.swing.JFrame {
 
 
     private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
-          int option = JOptionPane.showConfirmDialog(this, "Are you sure you want to logout?", "Logout", JOptionPane.YES_NO_OPTION);
-    
-    if (option == JOptionPane.YES_OPTION) {
-        dispose();
-    }
+        int option = JOptionPane.showConfirmDialog(this, "Are you sure you want to logout?", "Logout", JOptionPane.YES_NO_OPTION);
+
+        if (option == JOptionPane.YES_OPTION) {
+            dispose();
+        }
     }//GEN-LAST:event_logoutbtnActionPerformed
 
     private void weekcmbxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weekcmbxActionPerformed
-         int week_db = weekcmbx.getSelectedIndex() + 1;
+        int week_db = weekcmbx.getSelectedIndex() + 1;
         int month_db = monthcmbx.getSelectedIndex() - 3;
 
         System.out.println("Month: " + month_db);
@@ -1059,6 +1083,5 @@ public class admin_dashboard extends javax.swing.JFrame {
     public static int week_db, day_db;
     public static String sched_code;
     static Custom_Yesnodialog yesno = new Custom_Yesnodialog();
-
 
 }

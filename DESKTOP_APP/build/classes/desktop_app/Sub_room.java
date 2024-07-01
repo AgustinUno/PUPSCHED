@@ -25,6 +25,16 @@ public class Sub_room extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //Center the frame to screen
         jTextField1.requestFocusInWindow();
+        applyCustomFont();
+    }
+    
+     private void applyCustomFont() {
+
+        jLabel3.setFont(Custom_font.getFont("Bold.ttf", 24));
+        jLabel4.setFont(Custom_font.getFont("Regular.ttf", 14));
+        cmbRoom.setFont(Custom_font.getFont("Regular.ttf", 14));
+        notetxt.setFont(Custom_font.getFont("Regular.ttf", 14));
+        kButton2.setFont(Custom_font.getFont("Bold.ttf", 14));
     }
 
     
@@ -97,6 +107,7 @@ public class Sub_room extends javax.swing.JFrame {
         jPanel1.add(cmbRoom);
         cmbRoom.setBounds(170, 180, 180, 40);
 
+        notetxt.setFont(new java.awt.Font("Product Sans", 0, 14)); // NOI18N
         notetxt.setText(" Add a note");
         notetxt.setBorder(null);
         notetxt.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +116,7 @@ public class Sub_room extends javax.swing.JFrame {
             }
         });
         jPanel1.add(notetxt);
-        notetxt.setBounds(170, 250, 180, 19);
+        notetxt.setBounds(170, 250, 180, 18);
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/desktop_app/assets/back.png"))); // NOI18N

@@ -1,3 +1,0 @@
-desktop_app.Db_con
-desktop_app.Db_con_3
-desktop_app.Db_con_2

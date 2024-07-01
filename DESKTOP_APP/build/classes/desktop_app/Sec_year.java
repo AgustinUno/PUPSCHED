@@ -22,6 +22,16 @@ public class Sec_year extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //Center the frame to screen
         jTextField1.requestFocusInWindow();
+        applyCustomFont();
+    }
+    
+     private void applyCustomFont() {
+
+        jLabel3.setFont(Custom_font.getFont("Bold.ttf", 24));
+        cmbYear.setFont(Custom_font.getFont("Regular.ttf", 13));
+        cmbSection.setFont(Custom_font.getFont("Regular.ttf", 13));
+       kButton2.setFont(Custom_font.getFont("Bold.ttf", 14));
+        jLabel4.setFont(Custom_font.getFont("Regular.ttf", 12));
     }
 
     /**

@@ -37,8 +37,6 @@ public class Db_con {
             Logger.getLogger(Db_con.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Connection Failed");
         }
-        
-        
         return cnx;
     }
 }
@@ -97,7 +95,6 @@ class Db_con_3 {
             Logger.getLogger(Db_con_2.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Connection Failed");
         }
-
         return cnx;
     }
 }
@@ -105,7 +102,7 @@ class Db_con_3 {
 /*
 NOTES FOR SERVER ACCESS:
 CURRENTLY SET FOR STATIC IP 192.168.0.101
-       //maybe port listening also at localhost idk 127.0.0.0
+//maybe port listening also at localhost idk 127.0.0.0
 
 REMOTE ACCESS CREDENTIALS ARE
 mysql -u remote_user -h 192.168.0.101 -P 3306 -p

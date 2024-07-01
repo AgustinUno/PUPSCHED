@@ -23,11 +23,23 @@ public class Sub_time extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //Center the frame to screen
         jTextField1.requestFocusInWindow();
+        applyCustomFont();
     }
     public  void setTime(String time){
     passed_time = time;
  
        System.out.println("Pass: " + time);
+    }
+    
+     private void applyCustomFont() {
+
+        jLabel3.setFont(Custom_font.getFont("Bold.ttf", 24));
+        jLabel4.setFont(Custom_font.getFont("Regular.ttf", 14));
+        jTextField1.setFont(Custom_font.getFont("Regular.ttf", 14));
+        cmbCourse.setFont(Custom_font.getFont("Regular.ttf", 13));
+        kButton2.setFont(Custom_font.getFont("Bold.ttf", 14));
+                timetxt.setFont(Custom_font.getFont("Regular.ttf", 13));
+
     }
 
     /**

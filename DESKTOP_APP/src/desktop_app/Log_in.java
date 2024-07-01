@@ -26,25 +26,27 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class Log_in extends javax.swing.JFrame {
 
-    
-
     /**
      * Creates new form Log_in
      */
     public Log_in() {
-       
+
         setUndecorated(true);
         setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         initComponents();
         setLocationRelativeTo(null); //Center the frame to screen
-
-applyCustomFont();
+        applyCustomFont();
     }
-    
-private void applyCustomFont() {
-     Font customFont = Custom_font.getFont("Bold.ttf", 30);
-     Title.setFont(customFont);    
-}
+
+    private void applyCustomFont() {
+
+        Title.setFont(Custom_font.getFont("Bold.ttf", 30));
+        subtitle1.setFont(Custom_font.getFont("Regular.ttf", 11));
+        sign_in_btn.setFont(Custom_font.getFont("Bold.ttf", 14));
+        footer.setFont(Custom_font.getFont("Bold.ttf", 10));
+        Schl_ID_field.setFont(Custom_font.getFont("Regular.ttf", 12));
+        Pw_secured_field.setFont(Custom_font.getFont("Regular.ttf", 12));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -443,54 +445,53 @@ private void applyCustomFont() {
 
     public void admin_check() {
         PreparedStatement ps;
-    ResultSet rs;
+        ResultSet rs;
 
-    String schoolId = Schl_ID_field.getText().trim();
-    String password = new String(Pw_secured_field.getPassword()).trim();
+        String schoolId = Schl_ID_field.getText().trim();
+        String password = new String(Pw_secured_field.getPassword()).trim();
 
-    String query = "SELECT * FROM admin_data WHERE user_id = ? AND pass = ?";
+        String query = "SELECT * FROM admin_data WHERE user_id = ? AND pass = ?";
 
-    try {
-        ps = Db_con.getConnection().prepareStatement(query);
-        ps.setString(1, schoolId);
-        ps.setString(2, password);  // Set the second parameter
+        try {
+            ps = Db_con.getConnection().prepareStatement(query);
+            ps.setString(1, schoolId);
+            ps.setString(2, password);  // Set the second parameter
 
-        rs = ps.executeQuery();
-        log_attempt++;
-        System.out.print("Attempt[" + log_attempt + "]: ");
+            rs = ps.executeQuery();
+            log_attempt++;
+            System.out.print("Attempt[" + log_attempt + "]: ");
 
-        // Check if the ResultSet contains any rows
-        if (rs.next()) {
-            // Retrieve the password from the ResultSet
-            String storedPassword = rs.getString("pass");
-            String storedUsername = rs.getString("user_id");
+            // Check if the ResultSet contains any rows
+            if (rs.next()) {
+                // Retrieve the password from the ResultSet
+                String storedPassword = rs.getString("pass");
+                String storedUsername = rs.getString("user_id");
 
-            // Check if the stored password matches the entered password (case-sensitive)
-            if (password.equals(storedPassword) && schoolId.equals(storedUsername)) {
-                
-                System.out.println("Admin Access Granted\n");
-                   Custom_animations.fadeIn(sec_year, 150, 50);
+                // Check if the stored password matches the entered password (case-sensitive)
+                if (password.equals(storedPassword) && schoolId.equals(storedUsername)) {
+
+                    System.out.println("Admin Access Granted\n");
+                    Custom_animations.fadeIn(sec_year, 150, 50);
                     sec_year.setVisible(true);
-                   
-                
-            } else {
-                System.out.println("Admin Access Denied\n");
-                 dia.setDiaError("Access Denied", "Credentials do not match, try again");
-            }
-        } else {
-            // User does not exist
-            System.out.println("User does not exist\n");
-             dia.setDiaError("Access Denied", "User does not exist, try again");
-        }
 
-        // Close ResultSet, PreparedStatement, and Connection
-        rs.close();
-        ps.close();
-    } catch (SQLException ex) {
-        // Handle SQL exceptions
-        ex.printStackTrace();
+                } else {
+                    System.out.println("Admin Access Denied\n");
+                    dia.setDiaError("Access Denied", "Credentials do not match, try again");
+                }
+            } else {
+                // User does not exist
+                System.out.println("User does not exist\n");
+                dia.setDiaError("Access Denied", "User does not exist, try again");
+            }
+
+            // Close ResultSet, PreparedStatement, and Connection
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            // Handle SQL exceptions
+            ex.printStackTrace();
+        }
     }
-    }     
 
     public ArrayList<String> data_fetch(String tableName, String columnName) {
         PreparedStatement ps;
@@ -530,7 +531,7 @@ private void applyCustomFont() {
     public static void main(String[] args) {
 
         try {
-             FlatLightLaf.install();
+            FlatLightLaf.install();
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Flatlaf Light".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -543,10 +544,10 @@ private void applyCustomFont() {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               
+
                 anim.fadeIn(logInFrame, 150, 50);
                 logInFrame.setVisible(true);
-                  
+
             }
         });
     }
@@ -583,6 +584,5 @@ private void applyCustomFont() {
     static int log_attempt = 0;
     static Sec_year sec_year = new Sec_year();
     static admin_dashboard admin_dash = new admin_dashboard("", "");
-
 
 }

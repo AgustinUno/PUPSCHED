@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package desktop_app;
+
 import static desktop_app.Log_in.dia;
 import static desktop_app.Sec_ques.addFocusListeners;
 import java.awt.Color;
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JTextField;
 
-
 /**
  *
  * @author agustin
@@ -26,19 +26,27 @@ public class Sec_change_user extends javax.swing.JFrame {
      * Creates new form forgot_pwrd
      */
     public Sec_change_user() {
-        
+
         setUndecorated(true);
         setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         initComponents();
         setLocationRelativeTo(null); //Center the frame to screen
         addFocusListeners(jTextField1, "New password");
-          addFocusListeners(jTextField2, "New password");
+        addFocusListeners(jTextField2, "New password");
+        applyCustomFont();
     }
-    
-    
-    
-   public static void setSecQues() {
-       
+
+    private void applyCustomFont() {
+
+        jLabel3.setFont(Custom_font.getFont("Bold.ttf", 24));
+        jLabel4.setFont(Custom_font.getFont("Regular.ttf", 14));
+        jTextField1.setFont(Custom_font.getFont("Regular.ttf", 14));
+        jTextField2.setFont(Custom_font.getFont("Regular.ttf", 14));
+        kButton2.setFont(Custom_font.getFont("Bold.ttf", 14));
+    }
+
+    public static void setSecQues() {
+
         PreparedStatement ps;
         ResultSet rs;
         ArrayList<String> getQues = new ArrayList<>();
@@ -54,7 +62,7 @@ public class Sec_change_user extends javax.swing.JFrame {
             while (rs.next()) {
                 String fetchedQues = rs.getString("SEC_Q");
                 getQues.add(fetchedQues);
-                
+
                 String fetchedAns = rs.getString("ANSWER");
                 getAns.add(fetchedAns);
             }
@@ -75,42 +83,38 @@ public class Sec_change_user extends javax.swing.JFrame {
 
             // Set the selected question on jLabel7
 //            jLabel7.setText(selectedQues);
-
             System.out.println("Selected Question: " + selectedQues);
             System.out.println("Corresponding Answer: " + selectedAns);
         } else {
             System.out.println("No data found in the database.");
         }
     }
-   
-   
-  public static void changePass(String schoolId, String newPassword) {
-    PreparedStatement ps;
 
-    String query = "UPDATE admin_data SET pass = ? WHERE user_id = ?";
+    public static void changePass(String schoolId, String newPassword) {
+        PreparedStatement ps;
 
-    try {
-        ps = Db_con.getConnection().prepareStatement(query);
-        ps.setString(1, newPassword); // Set the new password
-        ps.setString(2, schoolId);    // Set the user ID
+        String query = "UPDATE admin_data SET pass = ? WHERE user_id = ?";
 
-        int rowsAffected = ps.executeUpdate();
-        if (rowsAffected > 0) {
-            System.out.println("Password changed successfully.");
-        } else {
-            System.out.println("Error: User not found or password not changed.");
+        try {
+            ps = Db_con.getConnection().prepareStatement(query);
+            ps.setString(1, newPassword); // Set the new password
+            ps.setString(2, schoolId);    // Set the user ID
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Password changed successfully.");
+            } else {
+                System.out.println("Error: User not found or password not changed.");
+            }
+
+            // Close PreparedStatement and Connection
+            ps.close();
+        } catch (SQLException ex) {
+            // Handle SQL exceptions
+            ex.printStackTrace();
         }
-
-        // Close PreparedStatement and Connection
-        ps.close();
-    } catch (SQLException ex) {
-        // Handle SQL exceptions
-        ex.printStackTrace();
     }
-}
 
-   
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -271,20 +275,20 @@ public class Sec_change_user extends javax.swing.JFrame {
     int attempt = 1;
     private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
 
-     String newPassword = jTextField1.getText().trim();
-    String confirmPassword = jTextField2.getText().trim();
+        String newPassword = jTextField1.getText().trim();
+        String confirmPassword = jTextField2.getText().trim();
 
-     if (!newPassword.equals("New password") && !confirmPassword.equals("New password") && newPassword.equals(confirmPassword)) {
-        changePass(username, newPassword);
-        System.out.println("Password changed!");
-        System.out.println("User: " + username);
-        System.out.println("New pass: " + newPassword);
-         dispose();
-    } else {
-        System.out.println("Passwords do not match");
-        dia.setDiaError("Try Again", "Passwords do not match");
-    }
-     
+        if (!newPassword.equals("New password") && !confirmPassword.equals("New password") && newPassword.equals(confirmPassword)) {
+            changePass(username, newPassword);
+            System.out.println("Password changed!");
+            System.out.println("User: " + username);
+            System.out.println("New pass: " + newPassword);
+            dispose();
+        } else {
+            System.out.println("Passwords do not match");
+            dia.setDiaError("Try Again", "Passwords do not match");
+        }
+
     }//GEN-LAST:event_kButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -292,11 +296,11 @@ public class Sec_change_user extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-     
+
     }//GEN-LAST:event_jTextField1FocusGained
 
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-      
+
     }//GEN-LAST:event_jTextField1FocusLost
 
     private void jLabel6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel6KeyPressed
@@ -358,7 +362,7 @@ public class Sec_change_user extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-            setSecQues();
+        setSecQues();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -384,5 +388,5 @@ public class Sec_change_user extends javax.swing.JFrame {
     static Sec_change_user frame = new Sec_change_user();
     static Log_in main = new Log_in();
     static String username = "admin", selectedQues, selectedAns;
-    
+
 }

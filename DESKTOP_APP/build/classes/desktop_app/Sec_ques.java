@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package desktop_app;
+
 import static desktop_app.Log_in.dia;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JTextField;
 
-
 /**
  *
  * @author agustin
@@ -25,18 +25,27 @@ public class Sec_ques extends javax.swing.JFrame {
      * Creates new form forgot_pwrd
      */
     public Sec_ques() {
-        
+
         setUndecorated(true);
         setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         initComponents();
         setLocationRelativeTo(null); //Center the frame to screen
         addFocusListeners(jTextField1, "Your answer");
+        applyCustomFont();
     }
-    
-    
-    
-   public static void setSecQues() {
-       
+
+    private void applyCustomFont() {
+
+        jLabel3.setFont(Custom_font.getFont("Bold.ttf", 24));
+        jLabel4.setFont(Custom_font.getFont("Regular.ttf", 12));
+        jLabel2.setFont(Custom_font.getFont("Regular.ttf", 12));
+        jLabel7.setFont(Custom_font.getFont("Regular.ttf", 18));
+        jTextField1.setFont(Custom_font.getFont("Regular.ttf", 14));
+        kButton2.setFont(Custom_font.getFont("Bold.ttf", 14));
+    }
+
+    public static void setSecQues() {
+
         PreparedStatement ps;
         ResultSet rs;
         ArrayList<String> getQues = new ArrayList<>();
@@ -52,7 +61,7 @@ public class Sec_ques extends javax.swing.JFrame {
             while (rs.next()) {
                 String fetchedQues = rs.getString("SEC_Q");
                 getQues.add(fetchedQues);
-                
+
                 String fetchedAns = rs.getString("ANSWER");
                 getAns.add(fetchedAns);
             }
@@ -80,7 +89,7 @@ public class Sec_ques extends javax.swing.JFrame {
             System.out.println("No data found in the database.");
         }
     }
-   
+
     public static void addFocusListeners(JTextField textField, String defaultText) {
         textField.addFocusListener(new FocusListener() {
             @Override
@@ -106,6 +115,7 @@ public class Sec_ques extends javax.swing.JFrame {
             textField.setForeground(Color.GRAY);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -262,23 +272,22 @@ public class Sec_ques extends javax.swing.JFrame {
     private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
 
         // Get the entered answer from jTextField1
-    String enteredAns = jTextField1.getText().trim();
+        String enteredAns = jTextField1.getText().trim();
 
-    // Check if the entered answer matches the selected answer
-    if (selectedAns != null && enteredAns.equalsIgnoreCase(selectedAns)) {
-        // If the answer is correct
-        System.out.println("Answer is correct.");
-        sec_change_user.setVisible(true);
-        dispose();
-      
-        // Perform any further actions here, e.g., allowing the user to reset their password
-    } else {
-        // If the answer is incorrect
-        System.out.println("Answer is incorrect. Please try again.");
-        dia.setDiaError("Incorrect Answer", "Please try another one");
-    }
-    
-       
+        // Check if the entered answer matches the selected answer
+        if (selectedAns != null && enteredAns.equalsIgnoreCase(selectedAns)) {
+            // If the answer is correct
+            System.out.println("Answer is correct.");
+            sec_change_user.setVisible(true);
+            dispose();
+
+            // Perform any further actions here, e.g., allowing the user to reset their password
+        } else {
+            // If the answer is incorrect
+            System.out.println("Answer is incorrect. Please try again.");
+            dia.setDiaError("Incorrect Answer", "Please try another one");
+        }
+
 
     }//GEN-LAST:event_kButton2ActionPerformed
 
@@ -287,11 +296,11 @@ public class Sec_ques extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-     
+
     }//GEN-LAST:event_jTextField1FocusGained
 
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-      
+
     }//GEN-LAST:event_jTextField1FocusLost
 
     private void jLabel6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel6KeyPressed
@@ -341,7 +350,7 @@ public class Sec_ques extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-            setSecQues();
+        setSecQues();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -368,7 +377,6 @@ public class Sec_ques extends javax.swing.JFrame {
     static Sec_ques frame = new Sec_ques();
     static Log_in main = new Log_in();
     static String username = "admin", selectedQues, selectedAns;
-        static Sec_change_user sec_change_user = new Sec_change_user();
+    static Sec_change_user sec_change_user = new Sec_change_user();
 
-    
 }

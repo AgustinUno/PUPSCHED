@@ -29,6 +29,16 @@ public class Forgot_pwrd extends javax.swing.JFrame {
         setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         initComponents();
         setLocationRelativeTo(null); //Center the frame to screen
+        applyCustomFont();
+    }
+    
+     private void applyCustomFont() {
+
+        jLabel3.setFont(Custom_font.getFont("Bold.ttf", 24));
+        jLabel4.setFont(Custom_font.getFont("Regular.ttf", 12));
+        jLabel2.setFont(Custom_font.getFont("Regular.ttf", 12));
+       jTextField1.setFont(Custom_font.getFont("Regular.ttf", 12));
+        kButton2.setFont(Custom_font.getFont("Bold.ttf", 14));
     }
 
     /**
