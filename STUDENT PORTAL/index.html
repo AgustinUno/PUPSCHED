@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="pup logo.png" type="image/x-icon" />
+    <title>PUPSCHED-STUDENT</title>
+    <style>
+        @font-face {
+          font-family: "Bold";
+          src: local("Bold"), url("Google/ProductSans-Bold.ttf") format("truetype");
+          font-weight: lighter;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+          background-color: #510101;
+          color: #000000;
+        }
+
+        .main {
+          font-family: Bold, sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+
+        .login-panel {
+          background-color: #ffffff;
+          color: #000000;
+          padding: 40px;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          text-align: center;
+          max-width: 400px;
+          width: 100%;
+        }
+
+        .logo {
+          width: 80px;
+          height: 80px;
+          margin-bottom: 20px;
+        }
+
+        h2 {
+          margin: 0 0 10px;
+          font-size: 24px;
+        }
+
+        p {
+          margin: 0 0 20px;
+          color: #666;
+          font-size: 14px;
+        }
+
+        form {
+          display: flex;
+          flex-direction: column;
+        }
+
+        label {
+          text-align: left;
+          margin-bottom: 5px;
+          font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+          padding: 10px;
+          margin-bottom: 15px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+
+        .forgot-password {
+          text-align: right;
+          font-size: 14px;
+          color: #00bfff;
+          text-decoration: none;
+          margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+          background-color: #00bfff;
+          color: #ffffff;
+          border: none;
+          padding: 12px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        .university-name {
+          margin-top: 20px;
+          font-size: 12px;
+          color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="login-panel">
+            <img src="pup logo.png" class="logo" />
+            <h2>Student Dashboard</h2>
+            <p>Welcome back! Please enter your details</p>
+            <form action="submit.php" method="post">
+                <label for="username">Student ID:</label>
+                <input type="text" id="username" name="name" required />
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="pass" required />
+                <a href="forget.html" class="forgot-password">Forgot password</a>
+
+                <input type="submit" value="Sign In" />
+            </form>
+            <p class="university-name">
+                Polytechnic University of the Philippines - San Juan Campus
+            </p>
+        </div>
+    </div>
+</body>
+</html>
